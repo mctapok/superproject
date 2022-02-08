@@ -53,10 +53,8 @@ const loginUser = async (req, res) => {
 
 const isVerify = function (req, res, next) {
     try {
-        console.log('выполняется ыiverify бэк');
+        console.log('выполняется isverify бэк');
         const token = jwtGenerator(req.user.id, req.user.email, req.user.role)        
-        // console.log(token);
-        console.log('авторизация завершена')
         return res.json({token})
     } catch (err) {
         console.error(err.message);
