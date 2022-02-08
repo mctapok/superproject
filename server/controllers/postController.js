@@ -1,6 +1,6 @@
 const db = require("../db");
 
-//routes for post
+//controllers for post
 //create post
 const createPost = async (req, res) => {
     try {

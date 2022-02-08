@@ -1,0 +1,23 @@
+import Home from '../assets/home.svg'
+import {Link} from "react-router-dom";
+import './Navbar.css'
+import {useAuthContext} from "../hooks/useAuthContext";
+
+export default function Navbar() {
+    const {user} = useAuthContext()
+    return (
+        <div className='navbar'>
+            <ul>
+                <li className='logo'>
+                    <img src={Home}/>
+                    <Link to='/'><span>backdoor</span></Link>
+                </li>
+                {!user && <li> <Link to='/login'>login</Link></li>}
+                {!user && <li><Link to='/signup'>sign up</Link></li>}
+                <li>
+                    {user&& <button className='btn'>logout</button>}
+                </li>
+            </ul>
+        </div>
+    );
+};
