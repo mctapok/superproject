@@ -27,6 +27,7 @@ export const AuthContextProvider = ({ children }) => {
          isVerify().then(r => {
             dispatch({type:'AUTH_IS_READY', payload: r})
         })
+
     }, [])
 
     console.log(state)
