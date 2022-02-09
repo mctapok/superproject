@@ -7,7 +7,7 @@ function jwtGenerator(id, email, role){
         email,
         role
     }
-    return jwt.sign(payload, process.env.jwtSecret, {expiresIn: '24hr'});
+    return jwt.sign(payload, process.env.jwtSecret, {expiresIn: '1hr'});
 }
 
 module.exports = jwtGenerator;

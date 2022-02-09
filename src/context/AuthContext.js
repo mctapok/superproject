@@ -23,13 +23,11 @@ export const AuthContextProvider = ({ children }) => {
         authIsReady: false
     })
 
-
-
     useEffect(() => {
-         isVerify().then(r => {console.log(r)
+         isVerify().then(r => {
             dispatch({type:'AUTH_IS_READY', payload: r})
         })
-        isVerify();
+        // isVerify();
     }, [])
 
     console.log(state)

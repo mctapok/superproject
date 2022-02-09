@@ -11,10 +11,7 @@ export const useLogin = () => {
     const userLogin = async (email, password) => {
         try {
             const res = await login(email, password)
-            if(!res){
-                throw new Error('no response')
-            }
-        dispatch({type: 'LOGIN', payload: res})
+            dispatch({type: 'LOGIN', payload: res})
         
         if (!isCancelled) {
             setIsPending(false)

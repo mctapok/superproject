@@ -3,16 +3,24 @@ import jwtDecode from "jwt-decode";
 
 
 export const registration = async (name, email, password) => {
-  const {data} = await $api.post('/auth/register', {name, email, password, role: 'USER'})
-  localStorage.setItem('token', data.token)
-  return jwtDecode(data.token)
+    try {
+        const {data} = await $api.post('/auth/register', {name, email, password, role: 'USER'})
+        localStorage.setItem('token', data.token)
+        return jwtDecode(data.token)
+    } catch(err){
+        console.error(err.message)
+    }
 };
 
 export const login = async (email, password) => {
-    const {data} = await $api.post('/auth/login', {email, password})
-    localStorage.setItem('token', data.token)
-    console.log('отрбатал декод', jwtDecode(data.token));
-    return jwtDecode(data.token)
+   try {
+       const {data} = await $api.post('/auth/login', {email, password})
+       localStorage.setItem('token', data.token)
+       console.log('отрбатал декод', jwtDecode(data.token));
+       return jwtDecode(data.token)
+   } catch(err){
+       console.error(err.message)
+   }
   };
 
   export const isVerify = async () => {
@@ -21,6 +29,6 @@ export const login = async (email, password) => {
           localStorage.setItem('token', data.token)
           return jwtDecode(data.token)
       } catch(err){
-        console.log(err.message)
+          console.error(err.message)
       }
   };

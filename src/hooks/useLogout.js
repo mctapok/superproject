@@ -1,18 +1,19 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { useAuthContext } from "./useAuthContext";
+import {isVerify} from "../http/userApi";
 
-const useLogout = () => {
+export const useLogout = () => {
     const [isCancelled, setIsCancelled] = useState(false);
     const [error, setError] = useState(null);
     const [isPending, setIsPending] = useState(false);
-    const { dispatch } = useAuthContext();
+    const {  dispatch } = useAuthContext();
 
     const logout = async () => {
         setError(null)
         setIsPending(true)
 
         try {
-            await signout()
+            localStorage.clear()
             dispatch({ type: 'LOGOUT' })
             if (!isCancelled) {
                 setIsPending(false)

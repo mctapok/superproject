@@ -61,9 +61,13 @@ const isVerify = function (req, res, next) {
         res.status(500).send('server error')
     }
 }
+const logout = function (req, res){
+
+}
 
 module.exports = {
     createUser,
     loginUser,
-    isVerify
+    isVerify,
+    logout
 }
