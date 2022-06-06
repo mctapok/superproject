@@ -54,20 +54,16 @@ const loginUser = async (req, res) => {
 const isVerify = function (req, res, next) {
     try {
         console.log('выполняется isverify бэк');
-        const token = jwtGenerator(req.user.id, req.user.email, req.user.role)        
+        const token = jwtGenerator(req.user.id, req.user.email, req.user.role)
         return res.json({token})
     } catch (err) {
         console.error(err.message);
         res.status(500).send('server error')
     }
 }
-const logout = function (req, res){
-
-}
 
 module.exports = {
     createUser,
     loginUser,
-    isVerify,
-    logout
+    isVerify
 }

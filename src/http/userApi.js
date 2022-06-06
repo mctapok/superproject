@@ -16,6 +16,9 @@ export const login = async (email, password) => {
    try {
        const {data} = await $api.post('/auth/login', {email, password})
        localStorage.setItem('token', data.token)
+       const user = jwtDecode(data.token)
+       const userId = user.id
+       console.log(userId)
        console.log('отрбатал декод', jwtDecode(data.token));
        return jwtDecode(data.token)
    } catch(err){

@@ -23,6 +23,7 @@ ul, li, p, h1, h2, h3, h4 {
 ul {
     list-style-type: none;
 }
+
 .btn {
     background-color: #f8f9fa;
     border: 1px solid #b7b7b7;
@@ -52,15 +53,18 @@ ul {
     border-color: #4285f4;
     outline: none;
 }
+
 label {
     display: block;
     margin: 24px auto;
-  }
-  label span {
+}
+
+label span {
     display: block;
     margin-bottom: 6px;
-  }
-  input, textarea {
+}
+
+input, textarea {
     padding: 8px 6px;
     font-size: 1em;
     color: #777;
@@ -68,4 +72,18 @@ label {
     box-sizing: border-box;
     border: 1px solid #ddd;
     border-radius: 4px;
-  }
+    resize: none;
+}
+
+textarea {
+    min-height: 160px;
+}
+
+.error {
+    color: red;
+    background: #dddddd;
+    border: 1px solid red;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 10px 0;
+}

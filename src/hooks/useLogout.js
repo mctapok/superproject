@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import { useAuthContext } from "./useAuthContext";
-import {isVerify} from "../http/userApi";
+
 
 export const useLogout = () => {
     const [isCancelled, setIsCancelled] = useState(false);

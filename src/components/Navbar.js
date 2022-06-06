@@ -16,6 +16,7 @@ export default function Navbar() {
                 </li>
                 {!user && <li> <Link to='/login'>login</Link></li>}
                 {!user && <li><Link to='/signup'>sign up</Link></li>}
+                {user && <li><Link to='/create'>create</Link></li>}
                 <li>
                     {user && <button className='btn' onClick={logout}>logout</button>}
                 </li>

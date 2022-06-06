@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navbar from "./components/Navbar";
@@ -6,7 +5,7 @@ import { useAuthContext } from './hooks/useAuthContext';
 import Create from "./pages/create/Create";
 //pages
 import Home from './pages/Home/Home';
-import Item from "./pages/item/Item";
+import SinglePost from "./pages/singlePost/SinglePost";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Registration from "./pages/registration/Registration";
@@ -45,8 +44,8 @@ function App() {
                             <Route path='/search'>
                                 <Search />
                             </Route>
-                            <Route path='/item/:id'>
-                                <Item />
+                            <Route path='/post/:id'>
+                                <SinglePost />
                             </Route>
                         </Switch>
                     </div>

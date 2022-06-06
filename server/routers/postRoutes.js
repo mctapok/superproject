@@ -1,12 +1,13 @@
 const Router = require('express');
 const router = new Router();
-
+const uploadFile = require('../middleware/uploadFile')
 const postController = require('../controllers/postController');
 
-router.post('/post', postController.createPost);
-router.get('/post', postController.allPosts);
+
+router.post('/post',uploadFile.array('files',10), postController.createPost);
+router.get('/posts', postController.allPosts);
 router.get('/post/:id', postController.onePost);
-router.put('/post', postController.updatePost);
+router.put('/post:id', postController.updatePost);
 router.delete('/post/:id', postController.deletePost);
 
 module.exports = router;

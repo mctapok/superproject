@@ -42,14 +42,6 @@ export default function Registration() {
                     value={password}
                 />
             </label>
-            {/* <label> */}
-                {/* <span>confirm password:</span>
-                <input
-                    type="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                />
-            </label> */}
             <button className="btn">Sign in</button>
         </form>
     )

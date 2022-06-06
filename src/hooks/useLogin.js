@@ -11,6 +11,9 @@ export const useLogin = () => {
     const userLogin = async (email, password) => {
         try {
             const res = await login(email, password)
+            if(!res){
+                throw new Error('wrong password or email')
+            }
             dispatch({type: 'LOGIN', payload: res})
         
         if (!isCancelled) {

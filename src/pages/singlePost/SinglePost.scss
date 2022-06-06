@@ -1,0 +1,36 @@
+.post-summary {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 4px;
+  .due-date {
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: var(--title-color);
+  }
+  .content {
+    margin: 30px 0;
+    color: var(--text-color);
+    line-height: 1.8em;
+    font-size: 0.9em;
+  }
+  h4 {
+    color: var(--text-color);
+    font-size: 0.9em;
+  }
+  + {
+    .btn {
+      margin-top: 20px;
+    }
+  }
+}
+.post-content {
+  display: flex;
+  justify-content: space-between;
+}
+.img-gallery img{
+    display: flex;
+}
+.img-gallery-item img {
+    max-width: 350px;
+    margin: 10px 10px 40px 0px;
+}

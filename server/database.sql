@@ -14,12 +14,12 @@ CREATE TABLE users (
  );
  CREATE TABLE post (
     id SERIAL PRIMARY KEY
-    user_id INT NOT NULL REFERENCES users(id)
+    user_id VARCHAR NOT NULL REFERENCES users(id)
     title VARCHAR (100),
     content VARCHAR,
-    created_at TIMESTAMP,
+    created_at VARCHAR,
     created_by VARCHAR,
-    imgUrl VARCHAR,
+    img_url VARCHAR,
  );
 
  CREATE TABLE comment (
@@ -27,13 +27,13 @@ CREATE TABLE users (
     content VARCHAR,
     created_at TIMESTAMP,
     created_by VARCHAR,
-    user_id INT NOT NULL REFERENCES users(id),
-    post_id INT NOT NULL REFERENCES post(id)
+    user_id VARCHAR NOT NULL REFERENCES users(id),
+    post_id VARCHAR NOT NULL REFERENCES post(id)
  );
 
   CREATE TABLE rating (
      id SERIAL PRIMARY KEY,
      rating INT,
-     user_id INT NOT NULL REFERENCES users(id),
-     post_id INT NOT NULL REFERENCES post(id)
+     user_id VARCHAR NOT NULL REFERENCES users(id),
+     post_id VARCHAR NOT NULL REFERENCES post(id)
   );

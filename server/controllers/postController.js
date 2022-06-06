@@ -3,16 +3,25 @@ const db = require("../db");
 //controllers for post
 //create post
 const createPost = async (req, res) => {
+    console.log(req.body)
+    console.log(req.files)
     try {
+        const postFiles = req.files.map(file => (file.path))
+        console.log(postFiles)
+        // const files = Object.assign({}, postFiles)
+        // console.log(files);
+
         const newPost = await db.query(
-            'INSERT INTO post (title, content, created_at, created_by, imgurl, user_id) VALUES ($1, $2, $3, $4, $5, $6) returning *',
-            [req.body.title, req.body.content, req.body.created_at, req.body.created_by, req.body.imgurl, req.body.user_id]);
-        console.log(newPost);
-        res.json({
-            data: {
-                post: newPost.rows
-            }
+            'INSERT INTO post (title, content, created_at, created_by, user_id, files) VALUES ($1, $2, $3, $4, $5, $6) returning *',
+            [req.body.title, req.body.content, req.body.created_at, req.body.created_by, req.body.user_id, postFiles]);
+        //получаем id поста для создания папки перемещния файлов
+
+        //апдейтим пост добавляя url паки изображений для img_url  
+        res.status(200).json({ 
+            post: newPost.rows[0],
+            status: 'success'
         })
+
     } catch (err) {
         console.log(err.message)
     }
@@ -22,8 +31,8 @@ const createPost = async (req, res) => {
 const allPosts =  async (req, res) => {
     try {
         const allPosts = await db.query('select * from post');
-        console.log(allPosts);
-        res.json({
+        res.status(200).json({
+            status: 'success',
             results: allPosts.rows.length,
             data: {
                 allPosts: allPosts.rows
@@ -38,7 +47,8 @@ const allPosts =  async (req, res) => {
 const onePost =  async (req, res) => {
     try {
         const singlePost = await db.query('select * from post where id = $1', [req.params.id]);
-        res.json({
+        res.status(200).json({
+            status: 'success',
             data: {
                 post: singlePost.rows[0]
             }
@@ -52,7 +62,8 @@ const updatePost = async(req, res) => {
     try {
         const updPost = await db.query("update post set title = $1, content = $2  where id = $3 returning *",
             [req.body.title, req.body.content, req.params.id]);
-        res.json({
+        res.status(200).json({
+            status: 'success',
             data: {
                 post: updPost.rows[0]
             }
